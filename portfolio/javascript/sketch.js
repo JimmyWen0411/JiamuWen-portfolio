@@ -6,7 +6,7 @@ var particles = [num];
 
 
 function setup() {
-  createCanvas(windowWidth, windowHeight/2);
+  createCanvas(windowWidth, windowHeight*0.7);
  
   //createCanvas(640, 480);
   noStroke();
