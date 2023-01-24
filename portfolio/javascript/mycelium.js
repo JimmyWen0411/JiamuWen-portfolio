@@ -64,7 +64,7 @@ function createParticle() {
 
 function setup() {
 
-createCanvas(windowWidth, windowHeight);
+createCanvas(windowWidth, windowHeight*0.7);
 
   for(var i=0; i < nP ; i++) {
 p.push(createParticle());
