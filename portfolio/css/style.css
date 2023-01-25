@@ -85,9 +85,6 @@ body {
   padding: 1px;
 }
 
-.image{  transition: all 1s;}
-.immag:hover{   transform: scale(1.06);  }
-
 /* 底部 */
 .footer {
   padding: 20px;
