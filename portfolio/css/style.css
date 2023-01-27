@@ -79,12 +79,6 @@ body {
   
 }
 
-.image {
-  background-color: #aaa;
-  width: 100%;
-  padding: 1px;
-}
-
 /* 底部 */
 .footer {
   padding: 20px;
@@ -103,7 +97,61 @@ body {
 
 }
 
+.image {
+  background-color: #aaa;
+  width: 100%;
+  padding: 1px;
+}
 
+.image#m1 a{
+  display: flex;
+  width: 100%;
+  height: 0;
+  padding: 10% 0;
+  background-image: url("/img/main-project1.jpg");
+  background-position: center;
+  background-size: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color:#ffffff;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.500);
+  transition: all 0.2s; 
+}
+
+.image#m1 a:hover{
+  color:#d1d1d1;
+  background-size: 120%;
+}
+
+.image#m2 a{
+  display: flex;
+  width: 100%;
+  height: 0;
+  padding: 10% 0;
+  background-image: url("/img/main-project2.jpg");
+  background-position: center;
+  background-size: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color:#ffffff;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.500);
+  transition: all 0.2s; 
+}
+
+.image#m2 a:hover{
+  color:#d1d1d1;
+  background-size: 120%;
+}
+
+.image h2{
+  margin:10px;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.500);
+  padding:5px 10px;
+ }
 
 /* 响应式布局 - 在屏幕设备宽度尺寸小于 700px 时, 让两栏上下堆叠显示 */
 @media screen and (max-width: 700px) {
