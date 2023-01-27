@@ -181,19 +181,19 @@ body {
   }
 
   /*响应式布局 - 背景视频*/
-  @media(min-aspect-ratio: 16/9){
-    #videoBG{
-      width: auto;
-      height: 100%;
-    }
-  }
-  @media(min-aspect-ratio: 16/9){
+  @media (min-aspect-ratio: 16/9){
     #videoBG{
       width: 100%;
       height: auto;
     }
   }
-  @media(max-width: 768px){
+  @media (max-aspect-ratio: 16/9){
+    #videoBG{
+      width: auto;
+      height: 100%;
+    }
+  }
+  @media (max-width: 768px){
     #videoBG{
       display: none;
     }
