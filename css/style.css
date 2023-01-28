@@ -28,12 +28,7 @@ body {
   filter: brightness(80%);
   position: fixed;
   z-index: -1;
-  left: 50%;
-  top: 50%;
-  /*保证视频内容始终居中*/
   transform: translate(-50%, -50%);
-  width: 110%;
-  height: 110%;
   background: #333;
 }
 
@@ -113,6 +108,7 @@ body {
 .image {
   background-color: #aaa;
   width: 100%;
+  height: auto;
   padding: 1px;
 }
 
