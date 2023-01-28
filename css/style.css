@@ -41,6 +41,7 @@ body {
 .navbar {
   overflow: hidden;
   background-color: #333;
+  z-index: top;
 }
 
 /* 导航栏样式 */
@@ -62,6 +63,7 @@ body {
 .navbar a:hover {
   background-color: #ddd;
   color: black;
+  z-index: 2;
 }
 
 /* 列容器 */
@@ -77,6 +79,7 @@ body {
   flex: 10%;
   background-color: #f1f1f1;
   padding: 20px;
+  z-index: 1;
 }
 
 .main {   
@@ -84,7 +87,14 @@ body {
   flex: 70%;
   background-color: white;
   padding: 20px;
+  z-index: 0;
   
+}
+
+.hr-edge {
+  border: 0;
+  padding-top: 1px;
+  background: linear-gradient(to right, transparent, #d0d0d5, transparent);
 }
 
 /* 底部 */
@@ -129,10 +139,7 @@ body {
   transition: all 0.2s; 
 }
 
-.image#m1 a:hover{
-  color:#d1d1d1;
-  background-size: 120%;
-}
+
 
 .image#m2 a{
   display: flex;
@@ -151,7 +158,41 @@ body {
   transition: all 0.2s; 
 }
 
-.image#m2 a:hover{
+.image#m3 a{
+  display: flex;
+  width: 100%;
+  height: 0;
+  padding: 10% 0;
+  background-image: url("../img/main-poem.jpg");
+  background-position: center;
+  background-size: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color:#ffffff;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.700);
+  transition: all 0.2s; 
+}
+
+.image#m4 a{
+  display: flex;
+  width: 100%;
+  height: 0;
+  padding: 10% 0;
+  background-image: url("../img/main-tamagotchi.jpg");
+  background-position: center;
+  background-size: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color:#ffffff;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.700);
+  transition: all 0.2s; 
+}
+
+#m1 a:hover,#m2 a:hover,#m3 a:hover,#m4 a:hover{
   color:#d1d1d1;
   background-size: 120%;
 }
