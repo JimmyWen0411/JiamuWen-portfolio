@@ -75,3 +75,7 @@ class Particle {
     ellipse(this.loc.x, this.loc.y, this.loc.z);
   }
 }
+
+function doubleClicked(){
+  saveFrames('blueflame', 'png', 1, 1)
+  }

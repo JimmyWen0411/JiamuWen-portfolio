@@ -92,6 +92,6 @@ function draw() {
   }
 }
 
-  function mousePressed() {
+  function doubleClicked(){
     saveFrames('mycelium', 'png', 1, 1)
     }

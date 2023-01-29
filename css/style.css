@@ -22,7 +22,7 @@ body {
   color: white;
   text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.700);
 }
-#videoBG{
+#videoBG {
   filter: brightness(80%);
   position: fixed;
   z-index: -1;
@@ -84,7 +84,7 @@ body {
   margin: 0 auto;
 }
 
-#b2-1:hover,#b2-2:hover,#b3-1:hover,#b3-2:hover,#b3-3:hover{
+#b2-1:hover,#b2-2:hover,#b2-3:hover,#b3-1:hover,#b3-2:hover,#b3-3:hover{
   overflow: visible;
   color: black;
   background-color: white;
@@ -120,7 +120,14 @@ body {
   background-color: white;
   padding: 20px;
   z-index: 0;
-  
+  line-height: 1.5;
+}
+
+.mainTitle h1{
+  font-size: 30px;
+  text-decoration: underline;
+  text-underline-offset:8px;
+  text-decoration-color: #aaa;
 }
 
 .hr-edge {
@@ -154,7 +161,7 @@ body {
   padding: 1px;
 }
 
-.image#m1 a{
+.image#p1 a{
   display: flex;
   width: 100%;
   height: 0;
@@ -171,9 +178,7 @@ body {
   transition: all 0.2s; 
 }
 
-
-
-.image#m2 a{
+.image#p2 a{
   display: flex;
   width: 100%;
   height: 0;
@@ -190,7 +195,24 @@ body {
   transition: all 0.2s; 
 }
 
-.image#m3 a{
+.image#p3 a{
+  display: flex;
+  width: 100%;
+  height: 0;
+  padding: 10% 0;
+  background-image: url("../img/main-project3.jpg");
+  background-position: center;
+  background-size: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color:#ffffff;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.700);
+  transition: all 0.2s; 
+}
+
+.image#w1 a{
   display: flex;
   width: 100%;
   height: 0;
@@ -207,7 +229,7 @@ body {
   transition: all 0.2s; 
 }
 
-.image#m4 a{
+.image#w2 a{
   display: flex;
   width: 100%;
   height: 0;
@@ -224,7 +246,7 @@ body {
   transition: all 0.2s; 
 }
 
-#m1 a:hover,#m2 a:hover,#m3 a:hover,#m4 a:hover{
+#p1 a:hover,#p2 a:hover,#p3 a:hover,#w1 a:hover,#w2 a:hover{
   color:#d1d1d1;
   background-size: 120%;
 }
