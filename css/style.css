@@ -263,7 +263,24 @@ body {
   transition: all 0.2s; 
 }
 
-#p1 a:hover,#p2 a:hover,#p3 a:hover,#w1 a:hover,#w2 a:hover,#w3 a:hover {
+.image#w4 a{
+  display: flex;
+  width: 100%;
+  height: 0;
+  padding: 10% 0;
+  background-image: url("../img/main-dataset.jpg");
+  background-position: center;
+  background-size: 100%;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  text-decoration: none;
+  color:#ffffff;
+  text-shadow: 2px 2px 2px rgba(0, 0, 0, 0.700);
+  transition: all 0.2s; 
+}
+
+#p1 a:hover,#p2 a:hover,#p3 a:hover,#w1 a:hover,#w2 a:hover,#w3 a:hover,#w4 a:hover {
   color:#d1d1d1;
   background-size: 120%;
 }
