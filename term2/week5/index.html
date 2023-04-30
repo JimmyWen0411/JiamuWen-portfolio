@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>wcc2 week5 group</title>
+  <link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="section section1">
+            <div class="p1">
+                
+                <h1>
+                    THE WOORST<br/>
+                    RAILWAY<br/>
+                    IN LONDON<br/>
+                </h1>
+            </div>
+        </div>
+        <div class="section section2">
+            <div class="p2">
+                <img src="./resource/icon/icon.png" width="60%" />
+            </div>
+        </div>
+        <div class="section section3">
+            <div class="p3">
+                <h1 align="center">
+                    THE WOORST RAILWAY IN LONDON<br/><br/>
+                    <img src="./resource/icon/Thumbnails.png" width="60%" /><br/><br/>
+                    <button class="button"><a href="./comment/index.html">Leave your comments</a></button>
+                </h1>
+            </div>
+        </div>
+        <div class="section section4">
+            <h1 class="p4" align="center">BRAVE BRO</h1>
+            <div class="p4">
+                <video autoplay loop muted="" preload>
+                    <source src="./resource/demo.mp4" type="video/mp4">
+                </video>
+            </div>
+        </div>
+    </div>
+
+    <ul class="controls">
+        <li class="active"></li>
+        <li></li>
+        <li></li>
+        <li></li>
+    </ul>
+    <script>
+        const container = document.querySelector('.container')
+        const lis = document.querySelectorAll('.controls li')
+        const viewHeight = document.body.clientHeight
+        var index = 0
+
+        document.addEventListener('mousewheel',function(e){
+            if(e.wheelDelta === 120){
+                index--
+                if(index<0){
+                    index=0
+                }
+            }
+            if(e.wheelDelta === -120){
+                index++
+                if(index>lis.length-1){
+                    index=lis.length-1
+                }
+            }
+            container.style.top=-index*viewHeight+'px'
+            for(var j=0; j<lis.length; j++){
+                lis[j].className = ''
+            }
+            lis[index].className = 'active'
+        })
+
+        for(var i=0; i<lis.length; i++){
+            lis[i].tag = i
+            lis[i].onclick = function(){
+                for(var j=0; j<lis.length; j++){
+                    lis[j].className = ''
+                }
+                lis[this.tag].className = 'active'
+                index = this.tag
+                container.style.top = -this.tag * viewHeight + 'px'
+            }
+        }
+    </script>
+</body>
+</html>
