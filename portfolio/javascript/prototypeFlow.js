@@ -1,81 +1,94 @@
-
+// ==================== CONFIG ====================
 var num = 2000;
-var noiseScale=500;
-var noiseStrength=1;  // Default: 1;
-var particles = [num];
+var noiseScale = 500;
+var noiseStrength = 1;
+var particles = [];
 
+let attractMode = false;
+let attractionRadius = 250;  // 🔥 鼠标吸引范围（可增大 300-500 更夸张）
+let attractPower = 1.2;      // 🔥 基础吸引力量
+let dragInfluence = 0.20;    // 拖拽影响力度，让流体更柔顺
 
+// ==================== SETUP =====================
 function setup() {
-  createCanvas(windowWidth, windowHeight*0.7);
- 
-  //createCanvas(640, 480);
+  createCanvas(windowWidth, windowHeight);
   noStroke();
-  for (let i=0; i<num; i++) {
-    //x value start slightly outside the right of canvas, z value how close to viewer
-    var loc = createVector(random(width*1.2), random(height), 2);
-    var angle = 0; //any value to initialize
-    var dir = createVector(cos(angle), sin(angle));
-    var speed = random(0.5, 2);
-    // var speed = random(5,map(mouseX,0,width,5,20));   // faster
-    particles[i]= new Particle(loc, dir, speed);
+
+  for (let i=0;i<num;i++){
+    let loc = createVector(random(width),random(height));
+    let dir = createVector(1,0);
+    let speed = random(0.5,2);
+    particles[i] = new Particle(loc,dir,speed);
   }
 }
 
-function windowResized() {
-  resizeCanvas(windowWidth, windowHeight);
+function draw(){
+  fill(0,7);
+  rect(0,0,width,height);
+  for(let p of particles) p.run();
 }
 
-function draw() {
-  //background(0);
-  //fill(0, 10); // Fill with alpha value to produce the effect of particle fading.
-  fill(0, 5); // Fill with alpha value to produce the effect of particle fading.
-  noStroke();
-  rect(0, 0, width, height);
-  for (let i=0; i<particles.length; i++) {
-    particles[i].run();
-  }
-}
-
-class Particle {
-  constructor(_loc, _dir, _speed) {
+// ==================== PARTICLE ===================
+class Particle{
+  constructor(_loc,_dir,_speed){
     this.loc = _loc;
-    this.dir = _dir;
     this.speed = _speed;
-    // var col;
+    this.vel = createVector(random(-1,1),random(-1,1));
   }
 
-  run() {
-    this.move();
+  run(){
+    this.flowBase();          // 基本噪声流动
+    if(attractMode) this.pullToMouse();  // 鼠标吸引叠加
+    this.loc.add(this.vel);
     this.checkEdges();
-    this.update();
+    this.display();
   }
 
-  move() {
-    let angle=noise(this.loc.x/noiseScale, this.loc.y/noiseScale, frameCount/noiseScale)*TWO_PI*noiseStrength; //0-2PI
-    this.dir.x = cos(angle);
-    this.dir.y = sin(angle);
-    var vel = this.dir.copy();
-    var d =1;  //direction change
-    vel.mult(this.speed*d); //vel = vel * (speed*d)
-    this.loc.add(vel); //loc = loc + vel
+  // ★ 粒子持续带噪声，不会停住
+  flowBase(){
+    let angle=noise(this.loc.x/noiseScale,this.loc.y/noiseScale,frameCount/noiseScale)*TWO_PI*noiseStrength;
+    let flow = createVector(cos(angle),sin(angle)).mult(this.speed*0.6);
+    this.vel.lerp(flow,0.05);  // 低速缓动更柔
   }
 
-  checkEdges() {
-    //float distance = dist(width/2, height/2, loc.x, loc.y);
-    //if (distance>150) {
-    if (this.loc.x<0 || this.loc.x>width || this.loc.y<0 || this.loc.y>height) {
-      this.loc.x = random(width*1.2);
-      this.loc.y = random(height);
+  // ★ 扩大吸引范围，并让吸引呈 fluid-like 流动
+  pullToMouse(){
+    let mouseV = createVector(mouseX,mouseY);
+    let d = p5.Vector.dist(mouseV,this.loc);
+
+    if(d < attractionRadius){  // 🔥 扩大互动范围
+      let force = p5.Vector.sub(mouseV,this.loc);
+
+      // 距离越近越强，越远越弱（平滑非线性曲线）
+      let strength = attractPower * (1 - d / attractionRadius);
+      strength = pow(strength,1.8);   // 调整为更带冲击力的吸引模型
+
+      force.normalize().mult(strength);
+      this.vel.add(force);
+      this.vel.mult(1 - dragInfluence*0.08);
     }
   }
 
-  update() {
-    fill(255);
-    fill(0, random(100,200),random(100,200));
-    ellipse(this.loc.x, this.loc.y, this.loc.z);
+  checkEdges(){
+    if(this.loc.x<0||this.loc.x>width||this.loc.y<0||this.loc.y>height){
+      this.loc.set(random(width),random(height));
+    }
+  }
+
+  display(){
+    fill(0,random(120,200),random(160,230));
+    ellipse(this.loc.x,this.loc.y,2);
   }
 }
 
+// =================== MOUSE =======================
+function mousePressed(){ attractMode = true; }
+function mouseReleased(){ attractMode = false; }
+
 function doubleClicked(){
-  saveFrames('blueflame', 'png', 1, 1)
-  }
+  saveFrames("flow", "png", 1,1);
+}
+
+function windowResized(){
+  resizeCanvas(windowWidth,windowHeight*0.7);
+}
